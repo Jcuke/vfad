@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html data-ng-app="glance" data-ng-controller="RootCtrl as rootCtrl">
+<head>
+    <meta charset="utf-8">
+    <title>数人云</title>
+    <base href="/">
+    <link rel="stylesheet" href="css/style.23b53d53.css">
+    <link rel="shortcut icon" type="image/x-icon" href="pics/favicon.ico"/>
+</head>
+
+<body>
+<div layout="row" class="main" ng-cloak>
+    <aside class="sidebar-main" data-ng-class="{'sidebar-main_two' : rootCtrl.isShortMenu}" layout="column">
+        <div class="logo">
+            <a href="#"><img src="pics/logo-white-full.svg" data-ng-show="!rootCtrl.isShortMenu"></a>
+            <a href="#"><img src="pics/logo-white-small.jpg" data-ng-show="rootCtrl.isShortMenu"></a>
+        </div>
+        <div class="menu-sidebar" flex layout-align="space-between stretch" layout="column">
+            <ul>
+                <li data-ui-sref-active="active" title="首页">
+                    <md-button data-ui-sref="dashboard" data-ui-sref-opts="{inherit: false}">
+                        <i class="fa fa-tachometer"></i>
+                        首页
+                    </md-button>
+                </li>
+                <li title="应用管理" data-ui-sref-active="active">
+                    <md-button data-ui-sref="app" data-ui-sref-opts="{inherit: false}"><i
+                            class="fa fa-cube"></i>应用管理
+                    </md-button>
+                </li>
+                <li data-ui-sref-active="active" title="服务策略">
+                    <md-button data-ui-sref="policy"
+                               data-ui-sref-opts="{inherit: false}"><i class="fa fa-clock-o"></i>服务策略
+                    </md-button>
+                </li>
+                <li data-ui-sref-active="active" title="应用目录">
+                    <md-button data-ui-sref="repository" data-ui-sref-opts="{inherit: false}"><i
+                            class="fa fa-shopping-cart"></i>应用目录
+                    </md-button>
+                </li>
+                <li data-ui-sref-active="active" title="镜像构建">
+                    <md-button data-ui-sref="image"
+                               data-ui-sref-opts="{inherit: false}"><i class="fa fa-cogs"></i>镜像构建
+                    </md-button>
+                </li>
+                <li data-ui-sref-active="active" title="日志查询">
+                    <md-button data-ui-sref="log" data-ui-sref-opts="{inherit: false}"><i
+                            class="fa fa-search"></i>日志查询
+                    </md-button>
+                </li>
+                <li data-ui-sref-active="active" title="集群管理">
+                    <md-button data-ui-sref="cluster" data-ui-sref-opts="{inherit: false}"><i
+                            class="fa fa-server"></i>集群管理
+                    </md-button>
+                </li>
+            </ul>
+            <ul>
+                <li data-ng-if="!IS_OFF_LINE">
+                    <md-button ng-href="{/rootCtrl.userManualUrl/}" target="_blank"><i class="fa fa-book"></i>用户手册
+                    </md-button>
+                </li>
+                <li data-ng-if="!IS_OFF_LINE">
+                    <md-button href="http://open.shurenyun.com" target="_blank"><i class="fa fa-coffee"></i>数人社区</md-button>
+                </li>
+                <li data-ng-if="!IS_OFF_LINE">
+                    <md-button ng-href="#" data-ng-click="rootCtrl.linkToCS()" data-demo-disable><i class="fa fa-pencil-square-o"></i>工单反馈
+                    </md-button>
+                </li>
+            </ul>
+        </div>
+    </aside>
+    <div layout="column" flex>
+        <nav class="nav-main">
+            <md-toolbar>
+                <div class="md-toolbar-tools">
+                    <md-button class="md-icon-button" aria-label="Settings" data-ng-click="rootCtrl.togShortMenu()">
+                        <i class="fa fa-bars"></i>
+                    </md-button>
+                    <span flex></span>
+
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                            <i class="fa fa-th"></i>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item>
+                                <md-button data-ng-click="rootCtrl.goByToolbarToolsOption('cluster.createcluster')">
+                                    新建集群
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="rootCtrl.goByToolbarToolsOption('app.create')">
+                                    新建应用
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="rootCtrl.goByToolbarToolsOption('image.create')">
+                                    新建镜像
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+
+                    <md-button class="md-icon-button" aria-label="More" ng-click="rootCtrl.noticeNav.buildToggler()"
+                               ng-hide="rootCtrl.noticeNav.isOpenNav()">
+                        <i class="fa fa-bell"></i>
+                    </md-button>
+
+                    <md-menu>
+                        <md-button class="md-icon-button" aria-label="More" ng-click="$mdOpenMenu($event)">
+                            <i class="fa fa-user"></i>
+                            <md-tooltip md-direction="bottom">{/userName/}</md-tooltip>
+                        </md-button>
+                        <md-menu-content>
+                            <md-menu-item>
+                                <md-button data-ui-sref="user.groups">
+                                    <md-icon md-svg-src="pics/ic_people.svg" aria-label="ic_people "></md-icon>
+                                    用户中心
+                                </md-button>
+                            </md-menu-item>
+                            <md-menu-item>
+                                <md-button data-ng-click="rootCtrl.logout()">
+                                    <md-icon md-svg-src="pics/ic_power_settings.svg" aria-label="ic_power_settings "></md-icon>
+                                    退出
+                                </md-button>
+                            </md-menu-item>
+                        </md-menu-content>
+                    </md-menu>
+                    
+                </div>
+            </md-toolbar>
+        </nav>
+        <div class="main-container" flex data-ui-view></div>
+    </div>
+
+    <md-sidenav class="md-sidenav-right md-whiteframe-z2" md-component-id="noticeNav">
+        <md-toolbar class="md-theme-light">
+            <h1 class="md-toolbar-tools">公告栏</h1>
+        </md-toolbar>
+        <md-content layout-padding>
+            <div>
+                <md-content>
+                    <div data-ng-if="!rootCtrl.noticeHtml">暂无公告</div>
+                    <div data-ng-bind-html="rootCtrl.noticeHtml"></div>
+                </md-content>
+            </div>
+        </md-content>
+    </md-sidenav>
+</div>
+<div class="tab-rb-feedback ng-hide" style="bottom: 76px;" ng-show="notInDemoGroup && demoGroupId">
+    <a href="#" data-ng-click="rootCtrl.openJoinDemoGroupModal()" data-demo-disable>
+        <i class="glyphicon glyphicon-gift"></i>
+        <em>试用</em>
+    </a>
+</div>
+
+
+<!-- GrowingIO -->
+<script type='text/javascript'>
+    var _vds = _vds || [];
+</script>
+
+<!-- rev-hash -->
+<script src="js/confdev.js?v=57c98e853e6bd5868b60a47343b72c7d"></script>
+<!-- end -->
+<script src="js/script.js"></script>
+
+<script src="js/angular.js"></script>
+
+<script src="js/main.js"></script>
+
+<script src="js/old-main.js"></script>
+
+<script src="js/directive.js"></script>
+
+<script src="js/template.js"></script>
+
+<!-- baidu -->
+<script>
+    if (RUNNING_ENV === "prod") {
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?cd74c0fcc0c51aecc3bb276315e35e6a";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    }
+</script>
+
+</body>
+</html>
