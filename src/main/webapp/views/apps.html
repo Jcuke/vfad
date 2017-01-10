@@ -1,0 +1,124 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="box box-primary ">
+            <div class="box-header with-border">
+                <h3 class="box-title">应用管理列表</h3>
+                <div class="box-tools">
+                    <a class="btn btn-sm btn-success" href="#/apps_add"><i class="fa fa-plus"></i>&nbsp;&nbsp;创建应用 </a>
+                    <button id="refresh" class="btn btn-sm btn-success" ng-click="requests(true)">刷新</button>
+                </div>
+            </div>
+            <div class="box-body">
+                <div class="row" ng-show="advancedSearch">
+                    <form class="form-horizontal col-md-12">
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">产品编号</label>
+
+                            <div class="col-md-4">
+                                <input type="text" placeholder="请输入产品编号查询" class="form-control input-sm pull-right"
+                                       ng-model="searchValue">
+                            </div>
+                            <label class="col-md-2 control-label">产品名称</label>
+
+                            <div class="col-md-4">
+                                <input type="text" placeholder="请输入产品名称查询" class="form-control input-sm pull-right"
+                                       ng-model="listCtl.queryParam.searchProductInfo.matrixProductName">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">募集最小金额</label>
+
+                            <div class="col-md-4">
+                                <input type="text" placeholder="请输入募集最小金额" class="form-control input-sm pull-right"
+                                       ng-model="listCtl.queryParam.searchProductInfo.minIssuanceMoney">
+                            </div>
+                            <label class="col-md-2 control-label">募集最大金额</label>
+
+                            <div class="col-md-4">
+                                <input type="text" placeholder="请输入募集最大金额" class="form-control input-sm pull-right"
+                                       ng-model="listCtl.queryParam.searchProductInfo.maxIssuanceMoney">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">募集开始日期</label>
+
+                            <div class="col-md-4">
+                                <input placeholder="请输入募集开始日期" class="form-control form_datetime"
+                                       ng-model="listCtl.queryParam.searchProductInfo.issuanceStart">
+                            </div>
+                            <label class="col-md-2 control-label">募集结束日期</label>
+
+                            <div class="col-md-4">
+                                <input placeholder="请输入募集结束日期" class="form-control form_datetime"
+                                       ng-model="listCtl.queryParam.searchProductInfo.issuanceEnd">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-md-2 control-label">订单状态</label>
+
+                            <div class="col-md-4">
+                                <select class="form-control" ng-options="item.value as item.text for item in listCtl.statusList"
+                                        ng-model="listCtl.queryParam.searchProductInfo.productFmallStatus">
+                                    <option value="">--请选择--</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn btn-sm btn-primary pull-right" ng-click="search();">查询</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <table class="table table-bordered table-hover table-striped dataTable">
+                    <thead>
+                    <tr>
+                        <th nowrap="nowrap">应用名称</th>
+                        <th nowrap="nowrap">当前状态</th>
+                        <th nowrap="nowrap">更新时间</th>
+                        <th nowrap="nowrap">所属集群</th>
+                        <th nowrap="nowrap">容器个数</th>
+                        <th nowrap="nowrap">操作</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="r in records" id="rx_{{r.request.id}}" class="info">
+                        <td nowrap="nowrap">{{r.request.id}}</td>
+                        <td nowrap="nowrap">{{r.state}}</td>
+                        <td nowrap="nowrap">{{r.requestDeployState.activeDeploy.timestamp | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+                        <td nowrap="nowrap">{{r.request.group}}</td>
+                        <td nowrap="nowrap">{{r.request.instances}}</td>
+                        <td nowrap="nowrap"><a href="#/deploy?id={{r.request.id}}">部署</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="box-footer" ng-show="page.totalPage > 1">
+                <poss-pagination current-page="page.currentPage" total-page="page.totalPage"
+                                 on-select-page="queryProductList(page);"></poss-pagination>
+            </div>
+            <div class="overlay" ng-show="queryLoading">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
+    </div>
+
+    <!-- 提交对话框 -->
+    <div id="operateConfirmDialog" class="modal">
+        <div class="modal-dialog" style="position:absolute; top:40%; left:30%;">
+            <div class="box box-warning" style="display: inline-block;width: auto;min-width: 500px;text-align: left;">
+                <div class="box-header with-border"><h3 class="box-title">提示</h3>
+
+                    <div class="box-tools">
+                        <button class="btn btn-box-tool" ng-click="closeOperateConfirmDialog()"><i class="fa fa-times"></i></button>
+                    </div>
+                </div>
+                <div class="box-body" id="infomsg" style="font-weight:bold;">
+                    <span>{{operateMsg}}</span>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" ng-click="closeOperateConfirmDialog()">关闭</button>
+                    <button id="operate_product" type="button" class="btn btn-primary" ng-click="operate()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

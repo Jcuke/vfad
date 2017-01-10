@@ -1,0 +1,97 @@
+<div class="main-container ng-scope flex" flex="" data-ui-view="" style=""><!-- uiView:  -->
+    <ui-view class="ng-scope">
+        <div class="app-layout ng-scope">
+            <section class="main-section">
+                <header layout="row" layout-align="end start" class="layout-align-end-start layout-row">
+                    <div class="info flex" flex=""><h2>应用目录</h2></div>
+                </header>
+                <div class="main-content">
+                    <div layout="row" layout-wrap="" class="layout-wrap layout-row">
+                        <!-- ngRepeat: repository in repoListCtrl.repositories -->
+                        <md-card flex="18" data-ng-repeat="repository in repoListCtrl.repositories"
+                                 class="ng-scope flex-18" style=""><!-- ngIf: !IS_OFF_LINE --><img
+                                data-ng-if="!IS_OFF_LINE"
+                                ng-src="https://static.shurenyun.com/app_catalog_icons/mysql.png"
+                                class="md-card-image ng-scope" alt="Washed Out"
+                                src="https://static.shurenyun.com/app_catalog_icons/mysql.png"><!-- end ngIf: !IS_OFF_LINE -->
+                            <!-- ngIf: IS_OFF_LINE -->
+                            <md-card-title>
+                                <md-card-title-text><span class="md-headline ng-binding">mysql</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content><p class="ng-binding">最流行的数据库工具</p></md-card-content>
+                            <md-card-actions layout="row" layout-align="end center"
+                                             class="layout-align-end-center layout-row"><a
+                                    class="md-raised md-primary md-button md-ink-ripple"
+                                    data-ui-sref="repository.detail({projectName: repository.projectName, repositoryName:repository.name})"
+                                    href="/repository/detail/library/mysql" aria-label="部署"><span
+                                    class="ng-scope">部署</span></a></md-card-actions>
+                        </md-card>
+                        <!-- end ngRepeat: repository in repoListCtrl.repositories -->
+                        <md-card flex="18" data-ng-repeat="repository in repoListCtrl.repositories"
+                                 class="ng-scope flex-18"><!-- ngIf: !IS_OFF_LINE --><img data-ng-if="!IS_OFF_LINE"
+                                                                                          ng-src="https://static.shurenyun.com/app_catalog_icons/wordpress.png"
+                                                                                          class="md-card-image ng-scope"
+                                                                                          alt="Washed Out"
+                                                                                          src="https://static.shurenyun.com/app_catalog_icons/wordpress.png"><!-- end ngIf: !IS_OFF_LINE -->
+                            <!-- ngIf: IS_OFF_LINE -->
+                            <md-card-title>
+                                <md-card-title-text><span class="md-headline ng-binding">wordpress</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content><p class="ng-binding">WordPress是一种使用PHP语言开发的博客平台</p></md-card-content>
+                            <md-card-actions layout="row" layout-align="end center"
+                                             class="layout-align-end-center layout-row"><a
+                                    class="md-raised md-primary md-button md-ink-ripple"
+                                    data-ui-sref="repository.detail({projectName: repository.projectName, repositoryName:repository.name})"
+                                    href="/repository/detail/library/wordpress" aria-label="部署"><span class="ng-scope">部署</span></a>
+                            </md-card-actions>
+                        </md-card>
+                        <!-- end ngRepeat: repository in repoListCtrl.repositories -->
+                        <md-card flex="18" data-ng-repeat="repository in repoListCtrl.repositories"
+                                 class="ng-scope flex-18"><!-- ngIf: !IS_OFF_LINE --><img data-ng-if="!IS_OFF_LINE"
+                                                                                          ng-src="https://static.shurenyun.com/app_catalog_icons/redis.png"
+                                                                                          class="md-card-image ng-scope"
+                                                                                          alt="Washed Out"
+                                                                                          src="https://static.shurenyun.com/app_catalog_icons/redis.png"><!-- end ngIf: !IS_OFF_LINE -->
+                            <!-- ngIf: IS_OFF_LINE -->
+                            <md-card-title>
+                                <md-card-title-text><span class="md-headline ng-binding">redis</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content><p class="ng-binding">Redis是一个开源的使用ANSI</p></md-card-content>
+                            <md-card-actions layout="row" layout-align="end center"
+                                             class="layout-align-end-center layout-row"><a
+                                    class="md-raised md-primary md-button md-ink-ripple"
+                                    data-ui-sref="repository.detail({projectName: repository.projectName, repositoryName:repository.name})"
+                                    href="/repository/detail/library/redis" aria-label="部署"><span
+                                    class="ng-scope">部署</span></a></md-card-actions>
+                        </md-card>
+                        <!-- end ngRepeat: repository in repoListCtrl.repositories -->
+                        <md-card flex="18" data-ng-repeat="repository in repoListCtrl.repositories"
+                                 class="ng-scope flex-18"><!-- ngIf: !IS_OFF_LINE --><img data-ng-if="!IS_OFF_LINE"
+                                                                                          ng-src="https://static.shurenyun.com/app_catalog_icons/nginx.png"
+                                                                                          class="md-card-image ng-scope"
+                                                                                          alt="Washed Out"
+                                                                                          src="https://static.shurenyun.com/app_catalog_icons/nginx.png"><!-- end ngIf: !IS_OFF_LINE -->
+                            <!-- ngIf: IS_OFF_LINE -->
+                            <md-card-title>
+                                <md-card-title-text><span class="md-headline ng-binding">nginx</span>
+                                </md-card-title-text>
+                            </md-card-title>
+                            <md-card-content><p class="ng-binding">Nginx是一个高性能的HTTP和反向代理服务器</p></md-card-content>
+                            <md-card-actions layout="row" layout-align="end center"
+                                             class="layout-align-end-center layout-row"><a
+                                    class="md-raised md-primary md-button md-ink-ripple"
+                                    data-ui-sref="repository.detail({projectName: repository.projectName, repositoryName:repository.name})"
+                                    href="/repository/detail/library/nginx" aria-label="部署"><span
+                                    class="ng-scope">部署</span></a></md-card-actions>
+                        </md-card>
+                        <!-- end ngRepeat: repository in repoListCtrl.repositories --></div>
+                </div>
+            </section>
+        </div>
+    </ui-view>
+</div>
+
+

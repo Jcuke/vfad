@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <link rel="import" href="linkResource.html"/>
+    <script>alert(7)</script>
+</head>
+<body style="margin: 2%">
+<table style="width: 100%;height: 100%">
+    <tr style="height: 100%">
+        <td style="background-color: #0d3349">
+            <div>
+                <aside class="sidebar-main layout-column" data-ng-class="{'sidebar-main_two' : rootCtrl.isShortMenu}"
+                       layout="column">
+                    <div class="logo">
+                        <a href="#"><img src="./pics/vfLogo.png" class="img-responsive"></a>
+                    </div>
+                    <div class="menu-sidebar layout-align-space-between-stretch layout-column"
+                         layout-align="space-between stretch" layout="column">
+                        <ul>
+                            <li data-ui-sref-active="active" title="首页" class="active">
+                                <a class="md-button md-ink-ripple" data-ui-sref="dashboard"
+                                   data-ui-sref-opts="{inherit: false}" href="#/apps" aria-label="首页">
+                                    <i class="fa fa-tachometer ng-scope"></i>
+                                    <span class="ng-scope">首页</span>
+                                    <div class="md-ripple-container"></div>
+                                </a>
+                            </li>
+                            <li title="应用管理" data-ui-sref-active="active" class="">
+                                <a class="md-button md-ink-ripple" data-ui-sref="app"
+                                   data-ui-sref-opts="{inherit: false}" href="#/apps"
+                                   aria-label="应用管理"><i class="fa fa-cube ng-scope"></i><span
+                                        class="ng-scope">应用管理</span>
+
+                                    <div class="md-ripple-container"></div>
+                                </a>
+                            </li>
+                            <li data-ui-sref-active="active" title="服务策略">
+                                <a class="md-button md-ink-ripple" data-ui-sref="policy"
+                                   data-ui-sref-opts="{inherit: false}" href="#/policy"
+                                   aria-label="服务策略"><i class="fa fa-clock-o ng-scope"></i><span
+                                        class="ng-scope">服务策略</span></a>
+                            </li>
+                            <li data-ui-sref-active="active" title="应用目录">
+                                <a class="md-button md-ink-ripple" data-ui-sref="repository"
+                                   data-ui-sref-opts="{inherit: false}" href="#/repository"
+                                   aria-label="应用目录"><i class="fa fa-shopping-cart ng-scope"></i><span class="ng-scope">应用目录</span></a>
+                            </li>
+                            <li data-ui-sref-active="active" title="镜像构建">
+                                <a class="md-button md-ink-ripple" data-ui-sref="image"
+                                   data-ui-sref-opts="{inherit: false}" href="#/image"
+                                   aria-label="镜像构建"><i class="fa fa-cogs ng-scope"></i><span
+                                        class="ng-scope">镜像构建</span></a>
+                            </li>
+                            <li data-ui-sref-active="active" title="日志查询">
+                                <a class="md-button md-ink-ripple" data-ui-sref="log"
+                                   data-ui-sref-opts="{inherit: false}" href="#/logs"
+                                   aria-label="日志查询"><i class="fa fa-search ng-scope"></i><span
+                                        class="ng-scope">日志查询</span></a>
+                            </li>
+                            <li data-ui-sref-active="active" title="集群管理">
+                                <a class="md-button md-ink-ripple" data-ui-sref="cluster"
+                                   data-ui-sref-opts="{inherit: false}" href="#/cluster"
+                                   aria-label="集群管理"><i class="fa fa-server ng-scope"></i><span
+                                        class="ng-scope">集群管理</span></a>
+                            </li>
+                        </ul>
+                        <ul>
+                            <li data-ng-if="!IS_OFF_LINE" class="ng-scope">
+                                <a class="md-button md-ink-ripple"
+                                   target="_blank" aria-label="用户手册" href="#"><i
+                                        class="fa fa-book ng-scope"></i><span class="ng-scope">用户手册</span></a>
+                            </li>
+                        </ul>
+                    </div>
+                </aside>
+
+            </div>
+
+
+        </td>
+        <td>
+            <table style="width: 100%;height: 90%">
+                <tr style="height: 10%">
+                    <td>
+                        <!--<header class="main-header">-->
+                        <!--<div ui-view="navbar">横向导航</div>-->
+                        <!--</header>-->
+                        <nav class="nav-main">
+                            <md-toolbar>
+                                <div class="md-toolbar-tools">
+                                    <button class="md-icon-button md-button md-ink-ripple" type="button"
+                                            aria-label="Settings"
+                                            data-ng-click="rootCtrl.togShortMenu()">
+                                        <i class="fa fa-bars ng-scope"></i>
+                                    </button>
+                                    <span class="flex"></span>
+
+                                    <md-menu class="md-menu ng-scope">
+                                        <button class="md-icon-button md-button md-ink-ripple" type="button"
+                                                aria-label="More" ng-click="$mdOpenMenu($event)"
+                                                aria-haspopup="true" aria-expanded="false" aria-owns="menu_container_0">
+                                            <i class="fa fa-th ng-scope"></i>
+                                        </button>
+
+                                        <div class="md-open-menu-container md-whiteframe-z2" id="menu_container_0"
+                                             style="display: none;" aria-hidden="true">
+                                            <md-menu-content role="menu">
+                                                <md-menu-item>
+                                                    <button class="md-button md-ink-ripple" type="button"
+
+                                                            data-ng-click="rootCtrl.goByToolbarToolsOption('cluster.createcluster')"
+                                                            role="menuitem" aria-label="新建集群"><span class="ng-scope">
+                                    新建集群
+                                </span></button>
+                                                </md-menu-item>
+                                                <md-menu-item>
+                                                    <button class="md-button md-ink-ripple" type="button"
+
+                                                            data-ng-click="rootCtrl.goByToolbarToolsOption('app.create')"
+                                                            role="menuitem" aria-label="新建应用"><span class="ng-scope">
+                                    新建应用
+                                </span></button>
+                                                </md-menu-item>
+                                                <md-menu-item>
+                                                    <button class="md-button md-ink-ripple" type="button"
+
+                                                            data-ng-click="rootCtrl.goByToolbarToolsOption('image.create')"
+                                                            role="menuitem" aria-label="新建镜像"><span class="ng-scope">
+                                    新建镜像
+                                </span></button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </div>
+                                    </md-menu>
+
+                                    <button class="md-icon-button md-button md-ink-ripple" type="button"
+                                            aria-label="More"
+                                            ng-click="rootCtrl.noticeNav.buildToggler()"
+                                            ng-hide="rootCtrl.noticeNav.isOpenNav()" aria-hidden="false">
+                                        <i class="fa fa-bell ng-scope"></i>
+                                    </button>
+
+                                    <md-menu class="md-menu ng-scope">
+                                        <button class="md-icon-button md-button md-ink-ripple" type="button"
+                                                aria-label="More" ng-click="$mdOpenMenu($event)"
+                                                aria-haspopup="true" aria-expanded="false" aria-owns="menu_container_1">
+                                            <i class="fa fa-user ng-scope"></i>
+
+                                        </button>
+
+                                        <div class="md-open-menu-container md-whiteframe-z2" id="menu_container_1"
+                                             aria-hidden="true" style="display: none;">
+                                            <md-menu-content role="menu">
+                                                <md-menu-item>
+                                                    <a class="md-button md-ink-ripple"
+                                                       data-ui-sref="user.groups" role="menuitem" href="/user/groups">
+                                                        <md-icon md-svg-src="pics/ic_people.svg" aria-label="ic_people "
+                                                                 class="ng-scope" aria-hidden="true">
+                                                            <svg fill="#000000" height="100%" viewBox="0 0 24 24"
+                                                                 width="100%" xmlns="http://www.w3.org/2000/svg" fit=""
+                                                                 preserveAspectRatio="xMidYMid meet" focusable="false">
+                                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"></path>
+                                                            </svg>
+                                                        </md-icon><span class="ng-scope">
+                                    用户中心
+                                </span></a>
+                                                </md-menu-item>
+                                                <md-menu-item>
+                                                    <button class="md-button md-ink-ripple" type="button"
+                                                            data-ng-click="rootCtrl.logout()"
+                                                            role="menuitem">
+                                                        <md-icon md-svg-src="pics/ic_power_settings.svg"
+                                                                 aria-label="ic_power_settings " class="ng-scope"
+                                                                 aria-hidden="true">
+                                                            <svg fill="#000000" height="100%" viewBox="0 0 24 24"
+                                                                 width="100%" xmlns="http://www.w3.org/2000/svg" fit=""
+                                                                 preserveAspectRatio="xMidYMid meet" focusable="false">
+                                                                <path d="M0 0h24v24H0z" fill="none"></path>
+                                                                <path d="M13 3h-2v10h2V3zm4.83 2.17l-1.42 1.42C17.99 7.86 19 9.81 19 12c0 3.87-3.13 7-7 7s-7-3.13-7-7c0-2.19 1.01-4.14 2.58-5.42L6.17 5.17C4.23 6.82 3 9.26 3 12c0 4.97 4.03 9 9 9s9-4.03 9-9c0-2.74-1.23-5.18-3.17-6.83z"></path>
+                                                            </svg>
+                                                        </md-icon><span class="ng-scope">
+                                    退出
+                                </span></button>
+                                                </md-menu-item>
+                                            </md-menu-content>
+                                        </div>
+                                    </md-menu>
+                                </div>
+                            </md-toolbar>
+                        </nav>
+                    </td>
+                </tr>
+                <tr>
+                    <td valign="top">
+                        <!--<iframe name='main' style="height: 100%;width: 100%;border-width: 0px" src="./apps">-->
+
+                        <!--</iframe>-->
+                        <div ng-view></div>
+
+                    </td>
+                </tr>
+            </table>
+            <footer class="main-footer">
+                <strong>Copyright &copy; 2015 <a href="#"></a></strong> All rights reserved.
+            </footer>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>
+
+
+<script type="text/javascript" src="js/message-utils.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="controller/apps.js"></script>
+<script type="text/javascript" src="controller/cluster.js"></script>
+<script type="text/javascript" src="controller/image.js"></script>
+<script type="text/javascript" src="controller/logs.js"></script>
+<script type="text/javascript" src="controller/policy.js"></script>
+<script type="text/javascript" src="controller/repository.js"></script>
+
+<script type="text/javascript" src="views/apps/add.controller.js"></script>
+<script type="text/javascript" src="views/apps/deploy.controller.js"></script>
+
+
+
+
+

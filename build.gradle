@@ -11,8 +11,8 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply from: "./gradle-war.gradle"
 
 jar {
 	baseName = 'vfad'
@@ -27,7 +27,18 @@ repositories {
 
 
 dependencies {
-	compile('org.springframework.boot:spring-boot-starter-web')
+//	compile('org.springframework.boot:spring-boot-starter-web')
+
+//	外部tomcat启动用此方式
+	compile('org.springframework.boot:spring-boot-starter-web'){
+		exclude group: 'org.springframework.boot', module:'spring-boot-starter-tomcat'
+	}
+	//servlet-api.jar
+	compile fileTree(dir:'lib',include:['*.jar'])
+
+
+
+
 	runtime('org.springframework.boot:spring-boot-devtools')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 

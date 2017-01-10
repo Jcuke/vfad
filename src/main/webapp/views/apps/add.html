@@ -1,0 +1,104 @@
+<div class="row">
+    <form id="appliForm" class="form-horizontal" onsubmit="return false">
+
+        <p class="col-md-12">
+            <button name="save_appli" type="submit" class="btn btn-primary" ng-click="save()"
+                    ng-show="true">提交
+            </button>
+            <button name="issue_appli" type="submit" class="btn btn-primary" ng-click="issue()"
+                    ng-show="true">部署
+            </button>
+            <a class="btn btn-primary" href="#/apps">返回应用列表</a>
+        </p>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header with-border">
+                    <h3 class="box-title">基本信息</h3>
+                </div>
+                <div class="box-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">应用名称<span class="text-red">*</span></label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.id" id="appli_id" name="appli_id"
+                                   placeholder="请输入产品名称" data-bv-notempty data-bv-notempty-message="不能为空"
+                                   data-bv-stringlength data-bv-stringlength-max="50"
+                                   data-bv-stringlength-message="不能超过50个字符"
+                                   data-bv-regexp data-bv-regexp-regexp="^[\u4E00-\u9FA5A-Za-z0-9-_]+$"
+                                   data-bv-regexp-message="请输入中文、英文、数字、-或_">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">类型<span class="text-red">*</span></label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.requestType" ng-disabled="appli.id"
+                                   id="appli_requestType"
+                                   name="appli_requestType" placeholder="请输入应用名称" data-bv-notempty
+                                   data-bv-notempty-message="不能为空" data-bv-stringlength data-bv-stringlength-max="32"
+                                   data-bv-stringlength-message="不能超过32个字符"
+                                   data-bv-regexp data-bv-regexp-regexp="^[\u4E00-\u9FA5A-Za-z0-9-_]+$"
+                                   data-bv-regexp-message="请输入中文、英文、数字、-或_">
+                        </div>
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-sm-2 control-label">状态</label>-->
+
+                        <!--<div class="col-sm-4">-->
+                            <!--<input class="form-control" ng-model="appli.provider" id="appli_provider"-->
+                                   <!--name="appli_provider" placeholder="请输入产品提供方" data-bv-stringlength-->
+                                   <!--data-bv-stringlength-max="50" data-bv-stringlength-message="不能超过50个字符">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">实例个数</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.instances" id="appli_instances"
+                                    name="appli_instances">
+                            </input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">应用所属人</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.owners" id="appli_owners"
+                                   name="appli_owners">
+                            </input>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">rackAffinity</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.rackAffinity" id="appli_rackAffinity"
+                                   name="appli_rackAffinity">
+                            </input>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-show="false">
+                        <label class="col-sm-2 control-label">daemon</label>
+
+                        <div class="col-sm-4">
+                            <input class="form-control" ng-model="appli.daemon" id="appli_daemon"
+                                   name="appli_daemon">
+                            </input>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="col-md-12">
+            <button name="save_appli" type="submit" class="btn btn-primary" ng-click="save()"
+                    ng-show="true">提交
+            </button>
+            <button name="issue_appli" type="submit" class="btn btn-primary" ng-click="issue()"
+                    ng-show="true">部署
+            </button>
+            <a class="btn btn-primary" href="#/apps">返回应用列表</a>
+        </p>
+    </form>
+
+    <upload></upload>
+</div>
