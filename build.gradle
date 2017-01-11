@@ -11,6 +11,7 @@ buildscript {
 }
 
 apply plugin: 'java'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply from: "./gradle-war.gradle"
 
@@ -27,14 +28,14 @@ repositories {
 
 
 dependencies {
-//	compile('org.springframework.boot:spring-boot-starter-web')
+	compile('org.springframework.boot:spring-boot-starter-web')
 
 //	外部tomcat启动用此方式
-	compile('org.springframework.boot:spring-boot-starter-web'){
-		exclude group: 'org.springframework.boot', module:'spring-boot-starter-tomcat'
-	}
+//	compile('org.springframework.boot:spring-boot-starter-web'){
+//		exclude group: 'org.springframework.boot', module:'spring-boot-starter-tomcat'
+//	}
 	//servlet-api.jar
-	compile fileTree(dir:'lib',include:['*.jar'])
+//	compile fileTree(dir:'lib',include:['*.jar'])
 
 
 
